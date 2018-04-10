@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WYNullView"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "An easy way to use when view' content is empty"
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "This lib has been designed in a way where you won't need to extend UIView class. You will be able to fully customize the content and appearance of the empty states for your application"
 
-  s.homepage     = "https://github.com/WymanLyu/WYNullView"
+  s.homepage     = "https://github.com/HotWordland/WYNullView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
