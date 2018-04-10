@@ -75,8 +75,11 @@ static const void *wy_objWhitelistValueKey = &wy_objWhitelistValueKey;
         }
         [subView setHidden:NO];
     }
-    view.hidden = YES;
-}
+    [UIView animateWithDuration:0.25 animations:^{
+        view.alpha = 0;
+    } completion:^(BOOL finished) {
+        view.hidden = YES;
+    }];}
 
 #pragma mark - 私有方法
 - (NSMutableArray *)_loadWhitePlist {
