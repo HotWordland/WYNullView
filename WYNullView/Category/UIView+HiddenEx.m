@@ -63,6 +63,12 @@ static const void *wy_objWhitelistValueKey = &wy_objWhitelistValueKey;
         [subView setHidden:YES];
     }
     view.hidden = NO;
+    view.alpha = 0.0;
+    [UIView animateWithDuration:0.25 animations:^{
+        view.alpha = 1.0;
+    } completion:^(BOOL finished) {
+    }];
+    
 }
 
 - (void)wy_showOtherViewAndHideView:(UIView *)view {
@@ -76,10 +82,13 @@ static const void *wy_objWhitelistValueKey = &wy_objWhitelistValueKey;
         [subView setHidden:NO];
     }
     [UIView animateWithDuration:0.25 animations:^{
-        view.alpha = 0;
+        view.alpha = 0.0;
     } completion:^(BOOL finished) {
-        view.hidden = YES;
-    }];}
+        if (finished) {
+            view.hidden = YES;
+        }
+    }];
+}
 
 #pragma mark - 私有方法
 - (NSMutableArray *)_loadWhitePlist {
