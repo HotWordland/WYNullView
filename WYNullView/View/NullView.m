@@ -43,8 +43,8 @@
 
 - (void)setFrame:(CGRect)frame {
     CGRect tempRect = frame;
-    tempRect.size.width = NULL_WIDTH;
-    tempRect.size.height = NULL_HEIGHT;
+//    tempRect.size.width = NULL_WIDTH;
+//    tempRect.size.height = NULL_HEIGHT;
     [super setFrame:tempRect];
 }
 
@@ -59,11 +59,15 @@
     self.iconView.frame = CGRectMake(iconX, iconY, iconW, iconH);
     
     // 说明
-    CGFloat desW = iconW;
-    CGFloat desH = 22;
-    CGFloat desX = superRect.size.width*0.5 - desW*0.5;
+    //    CGFloat desW = iconW;
+    //    CGFloat desH = 22;
+    //    CGFloat desX = superRect.size.width*0.5 - desW*0.5;
     CGFloat desY = CGRectGetMaxY( self.iconView.frame) + 15;
-    self.desLbl.frame = CGRectMake(desX, desY, desW, desH);
+    CGRect frameLabel = self.desLbl.frame;
+    frameLabel.origin.y = desY;
+    self.desLbl.frame = frameLabel;
+    CGPoint centerLabel =  CGPointMake(self.center.x, self.desLbl.center.y);
+    self.desLbl.center = centerLabel;
 }
 
 - (void)setNullIconImageName:(NSString *)nullIconImageName {
@@ -74,6 +78,7 @@
 - (void)setDesText:(NSString *)desText {
     _desText = desText;
     self.desLbl.text = _desText;
+    [self.desLbl sizeToFit];
 }
 
 @end

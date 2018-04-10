@@ -74,7 +74,7 @@ static const void *wy_loadingMaskViewValueKey = &wy_loadingMaskViewValueKey;
     
     // 2.调整位置
     if (CGRectEqualToRect(originRect, self.wy_nullView.frame)) { // nullViewHandle中未修改frame
-        self.wy_nullView.frame = CGRectMake(self.frame.size.width*0.5-NULL_WIDTH*0.5, fitH(234), NULL_WIDTH, NULL_HEIGHT);
+        self.wy_nullView.frame = CGRectMake(0, fitH(234), self.frame.size.width, NULL_HEIGHT);
         self.wy_nullView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     }
     if (offset) {
