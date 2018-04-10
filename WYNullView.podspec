@@ -51,10 +51,10 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "wyman" => "wyman.lyu@gmail.com" }
-  # Or just: s.author    = "wyman"
-  # s.authors            = { "wyman" => "wyman.lyu@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/wyman"
+  s.author             = { "wonderland" => "hotwordland@gmail.com" }
+  # Or just: s.author    = "wonderland"
+  # s.authors            = { "wonderland" => "hotwordland@gmail.com" }
+  # s.social_media_url   = "http://www.codercq.com"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/WymanLyu/WYNullView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/HotWordland/WYNullView.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
