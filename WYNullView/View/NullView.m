@@ -35,6 +35,7 @@
         desLbl.textColor = [UIColor lightGrayColor];
         desLbl.textAlignment = NSTextAlignmentCenter;
         [self addSubview:desLbl];
+        [desLbl sizeToFit];
         _desLbl = desLbl;
        
     }
