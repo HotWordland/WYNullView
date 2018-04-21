@@ -191,7 +191,7 @@ static const void *wy_loadingMaskViewValueKey = &wy_loadingMaskViewValueKey;
         [self insertSubview:self.wy_loadingMaskView belowSubview:self.wy_loadingView];
     }
     self.wy_loadingView.hidden = NO;
-    
+    self.wy_loadingView.alpha = 1.0;
     // 5.加载动画
     [(LoadingView *)self.wy_loadingView startLoading];
 }
