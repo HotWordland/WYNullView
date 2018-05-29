@@ -17,4 +17,10 @@
 
 @property (nonatomic, copy) NSString *desText;
 
+/**
+ 偏移量Y
+ */
+@property (assign, nonatomic) CGFloat offsetY;
+
 @end
+

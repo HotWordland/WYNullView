@@ -78,9 +78,10 @@ static const void *wy_loadingMaskViewValueKey = &wy_loadingMaskViewValueKey;
         self.wy_nullView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     }
     if (offset) {
-        CGRect newframe = self.wy_nullView.frame;
-        newframe.origin.y += offset;
-        self.wy_nullView.frame = newframe;
+        //        CGRect newframe = self.wy_nullView.frame;
+        //        newframe.origin.y += offset;
+        //        self.wy_nullView.frame = newframe;
+        [(NullView *)self.wy_nullView setOffsetY:offset];
     }
     
     // 3.添加到视图渲染层级

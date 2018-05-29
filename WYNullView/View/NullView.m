@@ -97,14 +97,13 @@
     //    CGFloat desW = iconW;
     //    CGFloat desH = 22;
     //    CGFloat desX = superRect.size.width*0.5 - desW*0.5;
-    
-    
-    
     CGPoint centerLabel =  CGPointMake(superRect.size.width/2, superRect.size.height/2);
     centerLabel.y -= 5;
     self.desLbl.center = centerLabel;
-    self.actLbl.center = centerLabel;
-    
+    CGRect desFrame = self.desLbl.frame;
+    desFrame.origin.y += self.offsetY;
+    self.desLbl.frame = desFrame;
+    self.actLbl.center = self.desLbl.center;
     
     CGFloat centerActOffsetY = CGRectGetMaxY(self.desLbl.frame);
     centerActOffsetY += 5;
@@ -112,7 +111,12 @@
     actFrame.origin.y = centerActOffsetY;
     self.actLbl.frame = actFrame;
 }
-
+-(void)setOffsetY:(CGFloat)offsetY{
+    _offsetY = offsetY;
+    CGRect desFrame = self.desLbl.frame;
+    desFrame.origin.y += offsetY;
+    self.desLbl.frame = desFrame;
+}
 - (void)setNullIconImageName:(NSString *)nullIconImageName {
     _nullIconImageName = nullIconImageName;
     self.iconView.image = [UIImage imageNamed:_nullIconImageName];
