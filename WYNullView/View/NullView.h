@@ -17,6 +17,9 @@
 
 @property (nonatomic, copy) NSString *desText;
 
+@property (nonatomic, weak) UILabel *actLbl;
+
+
 /**
  偏移量Y
  */

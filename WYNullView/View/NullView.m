@@ -15,7 +15,6 @@
 
 @property (nonatomic, weak) UILabel *desLbl;
 
-@property (nonatomic, weak) UILabel *actLbl;
 
 @end
 
