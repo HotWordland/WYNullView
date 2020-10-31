@@ -2,8 +2,8 @@
 //  UIView+WY.m
 //  5-20静默视图
 //
-//  Created by wyman on 2017/5/20.
-//  Copyright © 2017年 wyman. All rights reserved.
+//  Created by wonderland on 2017/5/20.
+//  Copyright © 2017年 wonderland. All rights reserved.
 //
 
 #import "UIView+WYNullView.h"
@@ -97,13 +97,63 @@ static const void *wy_loadingMaskViewValueKey = &wy_loadingMaskViewValueKey;
     // 5.隐藏其他视图后显示
     [self wy_hideOtherViewAndShowView:self.wy_nullView];
 }
-
+/// > 空视图
+- (void)wy_showNullView:(UIView *(^)(NullView *defaultNullView))nullViewHandle heightOffset:(CGFloat)offset withAlphaAnimation:(BOOL)alphaAnimation{
+    
+    // 0.懒加载空视图
+    if (!self.wy_nullView) {
+        self.wy_nullView = [NullView new];
+    }
+    if ([GlobleNullViewRef shareGlobleNullViewRef].globleNullViewHandle) { // 查找全局设置
+        UIView *globalNullView = [GlobleNullViewRef shareGlobleNullViewRef].globleNullViewHandle((NullView *)self.wy_nullView);
+        if (globalNullView) {
+            self.wy_nullView = globalNullView;
+        }
+    }
+    CGRect originRect = self.wy_nullView.frame;
+    
+    // 1.更新自定义的空视图
+    if (nullViewHandle) {
+        UIView *customNullView = nullViewHandle((NullView *)self.wy_nullView);
+        if (customNullView != self.wy_nullView) {
+            [self.wy_nullView removeFromSuperview];
+            self.wy_nullView = customNullView;
+        }
+    }
+    
+    // 2.调整位置
+    if (CGRectEqualToRect(originRect, self.wy_nullView.frame)) { // nullViewHandle中未修改frame
+        self.wy_nullView.frame = CGRectMake(0, fitH(234), self.frame.size.width, NULL_HEIGHT);
+        self.wy_nullView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    }
+    if (offset) {
+        //        CGRect newframe = self.wy_nullView.frame;
+        //        newframe.origin.y += offset;
+        //        self.wy_nullView.frame = newframe;
+        [(NullView *)self.wy_nullView setOffsetY:offset];
+    }
+    
+    // 3.添加到视图渲染层级
+    if (![self.subviews containsObject:self.wy_nullView]) {
+        [self addSubview:self.wy_nullView];
+    }
+    
+    // 4.显示到最前面
+    if (self.subviews.lastObject != self.wy_nullView) {
+        [self bringSubviewToFront:self.wy_nullView];
+    }
+    // 5.隐藏其他视图后显示
+    [self wy_hideOtherViewAndShowView:self.wy_nullView withAlphaAnimation:alphaAnimation];
+}
 - (void)wy_showNullView:(UIView *(^)(NullView *defaultNullView))nullViewHandle {
     [self wy_showNullView:nullViewHandle heightOffset:0.0];
 }
 
 - (void)wy_showNullView {
     [self wy_showNullView:nil heightOffset:0.0];
+}
+- (void)wy_showNullViewWithAlphaAnimation:(BOOL)alphaAnimation {
+    [self wy_showNullView:nil heightOffset:0.0 withAlphaAnimation:alphaAnimation];
 }
 
 - (void)wy_configNullView:(UIView *(^)(NullView *defaultNullView))nullViewConfig {
