@@ -3,7 +3,7 @@
 //  5-20静默视图
 //
 //  Created by wyman on 2017/5/20.
-//  Copyright © 2017年 wyman. All rights reserved.
+//  Copyright © 2017年 wonderland. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -31,6 +31,12 @@ typedef UIView *(^NullViewHandle)(NullView *defaultNullView);
  */
 - (void)wy_showNullView:(UIView *(^)(NullView *defaultNullView))nullViewHandle heightOffset:(CGFloat)offset;
 
+/** 显示空视图 没有alpha效果
+ * nullViewHandle : 修改空视图样式，如果为空则会按照wy_configNullView的样式, 如果没有配置wy_configNullView则是默认样式
+ * offset         : 调整垂直方向的间距
+ */
+- (void)wy_showNullView:(UIView *(^)(NullView *defaultNullView))nullViewHandle heightOffset:(CGFloat)offset withAlphaAnimation:(BOOL)alphaAnimation;
+
 /** 显示空视图
  * nullViewHandle : 修改空视图样式，如果为空则会按照wy_configNullView的样式, 如果没有配置wy_configNullView则是默认样式
  */
@@ -38,6 +44,8 @@ typedef UIView *(^NullViewHandle)(NullView *defaultNullView);
 
 /** 显示空视图 */
 - (void)wy_showNullView;
+/** 显示空视图是否需要alpha animation */
+- (void)wy_showNullViewWithAlphaAnimation:(BOOL)alphaAnimation;
 
 /** 隐藏空视图 */
 - (void)wy_hideNullView;
