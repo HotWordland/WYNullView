@@ -16,5 +16,6 @@
 
 - (void)wy_hideOtherViewAndShowView:(UIView *)view;
 - (void)wy_showOtherViewAndHideView:(UIView *)view;
+- (void)wy_hideOtherViewAndShowView:(UIView *)view withAlphaAnimation:(BOOL)alphaAnimation;
 
 @end
