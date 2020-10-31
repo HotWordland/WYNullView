@@ -68,8 +68,29 @@ static const void *wy_objWhitelistValueKey = &wy_objWhitelistValueKey;
         view.alpha = 1.0;
     } completion:^(BOOL finished) {
     }];
-    
 }
+- (void)wy_hideOtherViewAndShowView:(UIView *)view withAlphaAnimation:(BOOL)alphaAnimation{
+    for (UIView *subView in self.subviews) {
+        if ([self _isInClasswhitelist:subView]) {
+            continue;
+        }
+        if ([self _isInObjwhitelist:subView]) {
+            continue;
+        }
+        [subView setHidden:YES];
+    }
+    if (alphaAnimation) {
+        view.alpha = 0.0;
+        [UIView animateWithDuration:0.25 animations:^{
+            view.alpha = 1.0;
+        } completion:^(BOOL finished) {
+        }];
+    }else{
+        view.hidden = NO;
+        view.alpha = 1.0;
+    }
+}
+
 
 - (void)wy_showOtherViewAndHideView:(UIView *)view {
     for (UIView *subView in self.subviews) {
